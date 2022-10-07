@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <h1>利用debugger来识别当前是否属于调试模式</h1>
+    <div>测试前请先在开发者工具->调试器中停用断点</div>
+    <div>停用断点后刷新页面，然后对比开启开发者工具时与关闭开发者工具时的数值</div>
+    当前耗时：
+    <span id="tm"></span>
+    <div>可以看到，启动开发者工具时的数值比未启动时高了上百倍</div>
+    <script>
+        function test() {
+            var start = performance.now();
+            for (var i = 0; i < 100000; ++i) {
+                debugger;
+            }
+            var end = performance.now();
+            window.tmbox.innerText = end - start;
+            requestAnimationFrame(test);
+        }
+        window.onload = function () {
+            window.tmbox = document.getElementById("tm")
+            requestAnimationFrame(test);
+        }
+    </script>
+</body>
+
+</html>

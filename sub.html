@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script>
+        function loop() {
+            for (var i = 0; i < 10000000; ++i) {
+                debugger;
+            }
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+    </script>
+</head>
+
+</html>
